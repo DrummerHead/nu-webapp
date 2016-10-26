@@ -1,0 +1,250 @@
+options:
+  formatter: stylish
+files:
+  include: '**/*.s+(a|c)ss'
+rules:
+  # Extends
+  extends-before-mixins: 1
+  extends-before-declarations: 1
+  placeholder-in-extend: 1
+
+  # Mixins
+  mixins-before-declarations: 1
+
+  # Line Spacing
+  one-declaration-per-line: 1
+  empty-line-between-blocks: 1
+  single-line-per-selector: 1
+
+  # Disallows
+  no-attribute-selectors: 0
+  no-color-keywords: 1
+  no-color-literals:
+    - 1
+    -
+      allow-rgba: true
+  no-combinators: 0
+  no-css-comments: 1
+  no-debug: 1
+  no-disallowed-properties: 0
+  no-duplicate-properties:
+    - 1
+    -
+      exclude: src
+  no-empty-rulesets: 1
+  no-extends: 0
+  no-ids: 1
+  no-important: 1
+  no-invalid-hex: 1
+  no-mergeable-selectors: 1
+  no-misspelled-properties: 1
+  no-qualifying-elements: 1
+  no-trailing-whitespace: 1
+  no-trailing-zero: 1
+  no-transition-all: 1
+  no-universal-selectors: 0
+  no-url-protocols: 1
+  no-vendor-prefixes: 1
+  no-warn: 1
+  property-units: 0
+
+  # Nesting
+  force-attribute-nesting: 1
+  force-element-nesting: 0
+  force-pseudo-nesting: 1
+
+  # Name Formats
+  class-name-format: 1
+  function-name-format: 1
+  id-name-format: 0
+  mixin-name-format: 1
+  placeholder-name-format: 1
+  variable-name-format: 1
+
+  # Style Guide
+  attribute-quotes: 1
+  bem-depth: 0
+  border-zero: 1
+  brace-style: 1
+  clean-import-paths: 1
+  empty-args: 1
+  hex-length: 1
+  hex-notation: 1
+  indentation: 1
+  leading-zero: 1
+  nesting-depth: 1
+  property-sort-order:
+    - 1
+    - order:
+      - 'display'
+      - 'box-sizing'
+      - 'position'
+      - 'top'
+      - 'right'
+      - 'bottom'
+      - 'left'
+
+      - 'flex-flow'
+      - 'flex-direction'
+      - 'flex-wrap'
+      - 'justify-content'
+      - 'align-items'
+      - 'align-content'
+      - 'flex'
+      - 'flex-grow'
+      - 'flex-shrink'
+      - 'flex-basis'
+      - 'align-self'
+      - 'order'
+
+      - 'float'
+      - 'clear'
+
+      - 'width'
+      - 'min-width'
+      - 'max-width'
+
+      - 'height'
+      - 'min-height'
+      - 'max-height'
+
+      - 'margin'
+      - 'margin-top'
+      - 'margin-right'
+      - 'margin-bottom'
+      - 'margin-left'
+
+      - 'border'
+      - 'border-top'
+      - 'border-right'
+      - 'border-bottom'
+      - 'border-left'
+      - 'border-width'
+      - 'border-top-width'
+      - 'border-right-width'
+      - 'border-bottom-width'
+      - 'border-left-width'
+
+      - 'padding'
+      - 'padding-top'
+      - 'padding-right'
+      - 'padding-bottom'
+      - 'padding-left'
+
+      - 'font-size'
+      - 'line-height'
+
+      - 'columns'
+      - 'column-width'
+      - 'column-count'
+      - 'column-gap'
+      - 'column-fill'
+      - 'column-rule'
+      - 'column-span'
+
+      - 'transform'
+      - 'transform-box'
+      - 'transform-origin'
+      - 'transform-style'
+
+      - 'transition'
+      - 'transition-delay'
+      - 'transition-duration'
+      - 'transition-property'
+      - 'transition-timing-function'
+
+      - 'border-style'
+      - 'border-top-style'
+      - 'border-right-style'
+      - 'border-bottom-style'
+      - 'border-left-style'
+
+      - 'border-color'
+      - 'border-top-color'
+      - 'border-right-color'
+      - 'border-bottom-color'
+      - 'border-left-color'
+
+      - 'border-radius'
+      - 'border-top-left-radius'
+      - 'border-top-right-radius'
+      - 'border-bottom-left-radius'
+      - 'border-bottom-right-radius'
+
+      - 'outline'
+      - 'outline-color'
+      - 'outline-offset'
+      - 'outline-style'
+      - 'outline-width'
+
+      - 'font'
+      - 'font-family'
+      - 'src'
+      - 'font-smoothing'
+      - 'font-weight'
+      - 'font-style'
+      - 'font-variant'
+
+
+      - 'letter-spacing'
+      - 'list-style'
+
+      - 'text-align'
+      - 'text-decoration'
+      - 'text-indent'
+      - 'text-overflow'
+      - 'text-rendering'
+      - 'text-shadow'
+      - 'text-transform'
+      - 'text-wrap'
+      - 'text-size-adjust'
+
+      - 'white-space'
+      - 'word-spacing'
+
+      - 'color'
+
+      - 'background'
+      - 'background-attachment'
+      - 'background-clip'
+      - 'background-color'
+      - 'background-image'
+      - 'background-repeat'
+      - 'background-position'
+      - 'background-size'
+
+      - 'border-collapse'
+      - 'border-spacing'
+      - 'box-shadow'
+      - 'caption-side'
+      - 'content'
+      - 'cursor'
+      - 'empty-cells'
+      - 'opacity'
+      - 'overflow'
+      - 'quotes'
+      - 'speak'
+      - 'table-layout'
+      - 'vertical-align'
+      - 'visibility'
+      - 'z-index'
+  pseudo-element: 1
+  quotes: 1
+  shorthand-values: 1
+  url-quotes: 1
+  variable-for-property: 1
+  zero-unit: 1
+
+  # Inner Spacing
+  space-after-comma: 1
+  space-before-colon: 1
+  space-after-colon: 1
+  space-before-brace: 1
+  space-before-bang: 1
+  space-after-bang: 1
+  space-between-parens: 1
+  space-around-operator: 1
+
+  # Final Items
+  trailing-semicolon: 1
+  final-newline: 1

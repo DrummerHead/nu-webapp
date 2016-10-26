@@ -15,7 +15,6 @@ const reload = browserSync.reload;
 const del = require('del');
 
 
-
 // Style
 // =======================
 
@@ -41,6 +40,18 @@ gulp.task('styles', () => {
 
 // Style linting
 // -----------------------
+
+gulp.task('sass-lint', () =>
+  gulp.src('app/styles/**/*.scss')
+    .pipe($.sassLint({
+      configFile: '.sass-lint.yml',
+    }))
+    .pipe($.sassLint.format())
+    .pipe($.sassLint.failOnError())
+);
+
+gulp.task('scss-lint', ['sass-lint']);
+
 
 // JavaScript
 // =======================
@@ -87,34 +98,28 @@ gulp.task('build-js', () => browserifyBabelify({ watch: false }));
 gulp.task('watch-js', () => browserifyBabelify());
 
 
-
 // JavaScript minification
 // -----------------------
+
 
 // JavaScript linting
 // -----------------------
 
 
-
 // HTML
 // =======================
 
+
 // HTML minification
 // -----------------------
-
-
 
 
 // HTML linting
 // -----------------------
 
 
-
 // Helper
 // =======================
-
-
-
 
 
 // Serving
@@ -137,23 +142,10 @@ gulp.task('serve', ['styles', 'watch-js'], () => {
   gulp.watch('app/styles/**/*.scss', ['styles']);
 });
 
-
-
-
-
-
-
-
 // Building
 // =======================
 
 
 // Default
 // =======================
-
-
-
-
-
-
 
