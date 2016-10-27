@@ -37,6 +37,15 @@ gulp.task('styles', () => {
 // Style minification
 // -----------------------
 
+gulp.task('styles-min', ['styles'], () => {
+  return gulp.src('.tmp/styles/main.css')
+    .pipe($.cssnano({
+      safe: true,
+      autoprefixer: false,
+    }))
+    .pipe(gulp.dest('dist/styles'));
+});
+
 
 // Style linting
 // -----------------------
@@ -58,7 +67,7 @@ gulp.task('scss-lint', ['sass-lint']);
 
 const browserifyBabelify = ({ sourceFile = 'main', watch = true } = {}) => {
   const rebundle = bundler => {
-    bundler.bundle()
+    return bundler.bundle()
       .on('error', err => {
         $.util.error(err);
         this.emit('end');
@@ -70,7 +79,6 @@ const browserifyBabelify = ({ sourceFile = 'main', watch = true } = {}) => {
       .pipe($.sourcemaps.write('./'))
       .pipe(gulp.dest('./.tmp/scripts'))
       .pipe(reload({ stream: true }));
-    $.util.log('browserify done bundling!');
   };
 
   if (watch) {
@@ -89,17 +97,24 @@ const browserifyBabelify = ({ sourceFile = 'main', watch = true } = {}) => {
       .transform(babelify)
       .transform(uglifyify);
 
-    rebundle(bundler);
+    return rebundle(bundler);
   }
 };
 
-gulp.task('build-js', () => browserifyBabelify({ watch: false }));
+gulp.task('scripts-build', () => browserifyBabelify({ watch: false }));
 
-gulp.task('watch-js', () => browserifyBabelify());
+gulp.task('scripts-watch', () => browserifyBabelify());
 
 
 // JavaScript minification
 // -----------------------
+
+gulp.task('scripts-min', ['scripts-build'], () => {
+  return gulp.src('.tmp/scripts/main.js')
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/scripts'));
+});
+
 
 
 // JavaScript linting
@@ -113,19 +128,49 @@ gulp.task('watch-js', () => browserifyBabelify());
 // HTML minification
 // -----------------------
 
+gulp.task('html-min', () => {
+  return gulp.src('app/*.html')
+    .pipe($.htmlmin({
+      collapseWhitespace: true,
+      quoteCharacter: "'",
+    }))
+    .pipe(gulp.dest('dist'));
+});
+
 
 // HTML linting
 // -----------------------
 
 
+// Image optimization
+// =======================
+
+gulp.task('images', () => {
+  return gulp.src('app/images/**/*')
+    .pipe($.cache($.imagemin()))
+    .pipe(gulp.dest('dist/images'));
+});
+
+
 // Helper
 // =======================
+
+gulp.task('extras', () => {
+  return gulp.src([
+    'app/*',
+    '!app/*.html'
+  ], {
+    dot: true
+  }).pipe(gulp.dest('dist'));
+});
+
+gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 
 // Serving
 // =======================
 
-gulp.task('serve', ['styles', 'watch-js'], () => {
+gulp.task('serve', ['styles', 'scripts-watch'], () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -142,8 +187,13 @@ gulp.task('serve', ['styles', 'watch-js'], () => {
   gulp.watch('app/styles/**/*.scss', ['styles']);
 });
 
+
 // Building
 // =======================
+
+gulp.task('build', ['html-min', 'images', 'styles-min', 'scripts-min', 'extras'], () => {
+  return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
+});
 
 
 // Default
