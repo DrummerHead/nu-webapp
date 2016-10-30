@@ -54,7 +54,10 @@ rules:
   force-pseudo-nesting: 1
 
   # Name Formats
-  class-name-format: 1
+  class-name-format:
+    - 1
+    -
+      convention: hyphenatedbem
   function-name-format: 1
   id-name-format: 0
   mixin-name-format: 1
@@ -64,7 +67,10 @@ rules:
   # Style Guide
   attribute-quotes: 1
   bem-depth: 0
-  border-zero: 1
+  border-zero:
+    - 1
+    -
+      convention: none
   brace-style: 1
   clean-import-paths: 1
   empty-args: 1
@@ -135,12 +141,12 @@ rules:
       - 'line-height'
 
       - 'columns'
-      - 'column-width'
-      - 'column-count'
       - 'column-gap'
       - 'column-fill'
       - 'column-rule'
       - 'column-span'
+      - 'column-count'
+      - 'column-width'
 
       - 'transform'
       - 'transform-box'
