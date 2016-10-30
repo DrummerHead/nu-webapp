@@ -116,9 +116,19 @@ gulp.task('scripts-min', ['scripts-build'], () => {
 });
 
 
-
 // JavaScript linting
 // -----------------------
+
+const jsLint = source => () =>
+  gulp.src(source)
+    .pipe(reload({ stream: true, once: true }))
+    .pipe($.eslint())
+    .pipe($.eslint.format())
+    .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
+
+gulp.task('scripts-lint', jsLint('app/scripts/**/*.js'));
+
+gulp.task('gulpfile-lint', jsLint('gulpfile.js'));
 
 
 // HTML
