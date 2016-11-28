@@ -140,7 +140,7 @@ gulp.task('gulpfile-lint', jsLint('gulpfile.js'));
 // -----------------------
 
 gulp.task('html-min', () =>
-  gulp.src('app/*.html')
+  gulp.src('app/**/*.html')
     .pipe($.htmlmin({
       collapseWhitespace: true,
       quoteCharacter: "'",
@@ -151,6 +151,19 @@ gulp.task('html-min', () =>
 
 // HTML linting
 // -----------------------
+
+gulp.task('html-lint', () =>
+  gulp.src('app/**/*.html')
+    .pipe($.html({
+      format: 'gnu',
+    }))
+);
+
+gulp.task('html-lint-2', () =>
+  gulp.src('app/**/*.html')
+    .pipe($.htmlhint('.htmlhintrc'))
+    .pipe($.htmlhint.reporter('htmlhint-stylish'))
+);
 
 
 // Image optimization
