@@ -47,7 +47,7 @@ Change `name-of-your-app` to the name of your app or module in these commands:
 ```bash
 git clone git@github.com:DrummerHead/nu-webapp.git name-of-your-app
 cd name-of-your-app/
-rm -rf .git
+rm -rf .git && git init
 git add . && git commit -m "Fresh nu-webapp"
 npm install --global gulp-cli
 npm install
