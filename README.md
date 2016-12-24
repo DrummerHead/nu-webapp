@@ -62,7 +62,7 @@ If you're popcorn-intolerant, you can use [Yarn](https://yarnpkg.com/) instead o
 ```bash
 git clone git@github.com:DrummerHead/nu-webapp.git name-of-your-app
 cd name-of-your-app/
-rm -rf .git
+rm -rf .git && git init
 git add . && git commit -m "Fresh nu-webapp"
 yarn global add gulp-cli
 yarn
