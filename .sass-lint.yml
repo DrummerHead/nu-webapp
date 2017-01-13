@@ -141,12 +141,12 @@ rules:
       - 'line-height'
 
       - 'columns'
+      - 'column-width'
+      - 'column-count'
       - 'column-gap'
       - 'column-fill'
-      - 'column-rule'
       - 'column-span'
-      - 'column-count'
-      - 'column-width'
+      - 'column-rule'
 
       - 'transform'
       - 'transform-box'
